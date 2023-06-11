@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>westkite23</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>   
+    <nav class="navbar" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">westkite23</a>
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">홈으로</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">자기소개</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="ppt.html">포트폴리오</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="if.html">취미생활</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav>
+<section id="showcase">
+  <div class="container">
+      <h1>안녕 나의 블로그에 온걸 환영해</h1>
+      <p>지금 부터 나의대해 알려줄게</p>
+  </div>
+</section>
+<section id="pollow">
+  <div class="container">
+      <h1>새글 알림</h1>
+      <form>
+          <input type="id" id="blogId" placeholder="Enter your blog id..."/>
+          <button type="submit" class="button_1" onclick="handleFormSubmit(event)">새글 알림 신청</button>
+      </form>
+  </div>
+</section>
+<section id="boxes">
+  <div class="imgs row">
+      <div class="box col">
+          <img src="./img/jb.png">
+          <h3>중부대학교 재학중!</h3>
+      </div>
+      <div class="box col">
+          <a href="ga.html" ><img src="./img/sd.png"/></a>
+          <h3>정보보호학과</h3>
+      </div>
+      <div class="box col">
+          <a href="ga.html">
+            <img src="./img/aki.jpg">
+          </a>
+          <h3> 설</h3>
+          <p>((이미지를 클릭하면 갤러리로 넘어갑니다))</p>
+      </div>
+  </div>
+  <div id="toast">
+      
+  </div>
+</section>
+<style>
+  #showcase{
+    background-image: url("../img/back.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#showcase h1{
+    padding-top: 100px;
+    font-size: 55px;
+    padding-bottom: 10px;
+    color: white;
+    text-shadow: 0px 0px 13px blue;
+}
+
+#showcase p{
+    font-size: 20px;
+    color: black;
+}
+
+#pollow{
+    background-color: royalblue ;
+    padding: 15px;
+    color: white;
+    height: 80px;
+}
+
+#pollow h1{
+    float: left;
+}
+
+#pollow form{
+    float: right;
+    margin-top: 15px;
+}
+
+#pollow input[type="id"] {
+    padding: 4px;
+    height: 25px;
+    width: 250px;
+    border-radius: 5px;
+}
+
+.button_1{
+    height: 30px;
+    background-color: blue;
+    border-radius: 5px;
+    border: 0;
+    padding: 0 20px;
+    color: white;
+}
+
+.img{
+    width: 300px;
+}
+
+.imgs {
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+#boxes .box img {
+  width: 420px;
+  height: 420px;
+}
+
+#boxes .box {
+  float: left;
+  text-align: center;
+  width: 33%;
+  padding: 10px
+  
+}
+
+</style>
+<!-- <hr> -->
+<footer class="footer">
+    <!-- <div class="container" style="background-color: #e3f2fd;"> -->
+    <p class="text-center" style="background-color: #e3f2fd;">Copyright &copy; 2023, 중부대학교 정보보호학과 윤서연</p></div>
+  </footer>
+</body>
+  <script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+  crossorigin="anonymous">
+</script>
+<script>
+    function handleFormSubmit(event){
+    event.preventDefault();
+    var blogId = document.getElementById('blogId').value;
+    alert('신청이 완료되었습니다. 블로그 ID:'+ blogId);
+  }
+</script>
+<script>
+
+function toast (_id, message, option){
+
+  let mother = document.getElementById(_id);
+  if(mother.children.length && mother.children.length > 0) mother.removeChild(mother.firstChild);  //초기화
+  let doc = document.createElement('div');
+  mother.appendChild(doc);
+  doc.innerText = message;
+  
+  //부모노드 입니다.
+  let motherStyle = {display: 'flex',position: 'fixed',bottom: '1rem','justify-content': 'center', width: '100%', 'z-index':99999999, 'left':0,'text-align':'center'};
+  for(key in motherStyle) {  //부모테그에 스타일을 적용 합니다.
+      mother.style[key] = motherStyle[key];
+  }    
+
+  //자식노드 입니다.
+  let style = {opacity : 0, background : 'white', color : '#595959',  padding : '1rem 3.5rem 1rem 3.5rem', 'border-radius':'1rem', 'width' : 'auto'};
+  if(option) style = {...style, option};
+
+  //자식노드에 스타일 적용 합니다.
+  for(key in style) {
+      doc.style[key] = style[key];
+  }
+
+  let max = false;  //동작 완료여부 판별 변수 입니다.
+  let inter = setInterval(() => {  //이벤트
+      let number = parseFloat(doc.style.opacity)+0.02;
+      if(max) number = parseFloat(doc.style.opacity)-0.02;
+      if(number >= 1){
+          setTimeout(() => {
+              max = true;
+              setTimeout(() => {
+                  mother.style.display = 'none';  //none처리를 통해서 다른 영역이 선택가능하게 합니다.
+                  clearInterval(inter);  //이벤트 끝!
+              }, 3000);                    
+          }, 500);
+      }
+      doc.style.opacity = number;
+  }, 10)
+
+}
+
+toast('toast', `방문해 주셔서 감사합니다.
+오늘도 즐겁고 행복한 하루 보내세요!`, {})
+
+
+</script>
+</body>
+</html>
